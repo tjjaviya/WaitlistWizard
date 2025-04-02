@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import GlassCard from "./GlassCard";
+import GradientBorder from "./GradientBorder";
 
 const FeaturesSection = () => {
   // Animation variants
@@ -92,17 +93,22 @@ const FeaturesSection = () => {
             <motion.div 
               key={index}
               variants={itemVariants}
-              className="glass-card rounded-xl p-6 hover-up transition-all duration-300"
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
             >
-              <div 
-                className="w-14 h-14 rounded-lg flex items-center justify-center mb-4"
-                style={{ backgroundColor: `${feature.color}20` }}
+              <GlassCard 
+                interactive={true} 
+                shine={true} 
+                glow={true}
+                className="p-6 hover-target" 
               >
-                <i className={`fas ${feature.icon} text-2xl`} style={{ color: feature.color }}></i>
-              </div>
-              <h3 className="text-xl font-bold mb-2 font-montserrat">{feature.title}</h3>
-              <p className="text-white/70">{feature.description}</p>
+                <div 
+                  className="w-14 h-14 rounded-lg flex items-center justify-center mb-4"
+                  style={{ backgroundColor: `${feature.color}20` }}
+                >
+                  <i className={`fas ${feature.icon} text-2xl`} style={{ color: feature.color }}></i>
+                </div>
+                <h3 className="text-xl font-bold mb-2 font-montserrat">{feature.title}</h3>
+                <p className="text-white/70">{feature.description}</p>
+              </GlassCard>
             </motion.div>
           ))}
         </motion.div>
@@ -114,7 +120,11 @@ const FeaturesSection = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8 }}
         >
-          <GlassCard className="p-8 md:p-12 overflow-hidden relative">
+          <GlassCard 
+            className="p-8 md:p-12 overflow-hidden relative" 
+            interactive={true}
+            glow={true}
+          >
             <motion.div 
               className="absolute top-0 right-0 w-48 h-48 bg-[#4d54e0]/30 rounded-full blur-3xl -mr-12 -mt-12"
               animate={{ 
@@ -131,16 +141,14 @@ const FeaturesSection = () => {
                 <p className="text-white/70 mb-6">
                   Upgrade your trading strategy with our cutting-edge algorithm transformer. Save time, reduce errors, and maximize your potential returns.
                 </p>
-                <motion.button 
-                  className="bg-gradient-to-r from-[#00ffff] to-[#4d54e0] text-white font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-all duration-300 hover-up"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  Get Started Free
-                </motion.button>
+                <GradientBorder>
+                  <div className="bg-gradient-to-r from-[#00ffff] to-[#4d54e0] px-6 py-3 rounded-md font-bold text-white">
+                    Get Started Free
+                  </div>
+                </GradientBorder>
               </div>
               <div className="md:w-1/2 relative">
-                <div className="aspect-[16/9] bg-[#050816] rounded-lg overflow-hidden border border-white/10">
+                <div className="aspect-[16/9] bg-[#050816] rounded-lg overflow-hidden border border-white/10 shine-effect">
                   <img 
                     src="https://images.unsplash.com/photo-1624996379697-f01d168b1a52?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                     alt="Trading dashboard" 
@@ -148,7 +156,7 @@ const FeaturesSection = () => {
                   />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <motion.button 
-                      className="w-16 h-16 rounded-full bg-[#ff6b6b]/90 flex items-center justify-center text-white hover-up transition-all duration-300 hover:bg-[#ff6b6b]"
+                      className="w-16 h-16 rounded-full bg-[#ff6b6b]/90 flex items-center justify-center text-white glow-on-hover hover-target"
                       whileHover={{ scale: 1.1 }}
                       transition={{ duration: 0.3 }}
                     >

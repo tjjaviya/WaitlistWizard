@@ -99,37 +99,48 @@ const IndianBrokersSection = () => {
         </motion.div>
         
         <motion.div
-          className="glass-card rounded-xl p-8 mb-16"
+          className="mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7 }}
         >
-          <p className="text-white/80 text-center max-w-4xl mx-auto mb-10">
-            Our platform is designed to bridge international and local markets. In addition to global broker integrations, we specifically support all leading Indian brokers that offer Forex trading on the MT5 platform. Due to regulatory guidelines in India, these brokers typically offer a curated selection of forex pairs, including major pairs like USD/INR, EUR/INR, GBP/INR, and JPY/INR.
-          </p>
-          
-          <motion.div 
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+          <GlassCard 
+            className="p-8 rounded-xl" 
+            interactive={true}
+            glow={true}
           >
-            {brokers.map((broker, index) => (
-              <motion.div 
-                key={index}
-                variants={itemVariants}
-                className="glass-card rounded-xl p-6 hover-up transition-all duration-300 text-center"
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              >
-                <div className="h-12 flex items-center justify-center mb-4">
-                  <div className="text-xl font-bold" style={{ color: broker.color }}>{broker.name}</div>
-                </div>
-                <p className="text-white/70 text-sm">{broker.description}</p>
-              </motion.div>
-            ))}
-          </motion.div>
+            <p className="text-white/80 text-center max-w-4xl mx-auto mb-10">
+              Our platform is designed to bridge international and local markets. In addition to global broker integrations, we specifically support all leading Indian brokers that offer Forex trading on the MT5 platform. Due to regulatory guidelines in India, these brokers typically offer a curated selection of forex pairs, including major pairs like USD/INR, EUR/INR, GBP/INR, and JPY/INR.
+            </p>
+            
+            <motion.div 
+              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              {brokers.map((broker, index) => (
+                <motion.div 
+                  key={index}
+                  variants={itemVariants}
+                >
+                  <GlassCard
+                    className="p-6 text-center"
+                    interactive={true}
+                    shine={true}
+                    glow={true}
+                  >
+                    <div className="h-12 flex items-center justify-center mb-4">
+                      <div className="text-xl font-bold" style={{ color: broker.color }}>{broker.name}</div>
+                    </div>
+                    <p className="text-white/70 text-sm">{broker.description}</p>
+                  </GlassCard>
+                </motion.div>
+              ))}
+            </motion.div>
+          </GlassCard>
         </motion.div>
         
         <div className="flex flex-col md:flex-row gap-8">
@@ -140,7 +151,11 @@ const IndianBrokersSection = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7 }}
           >
-            <GlassCard className="p-8 h-full">
+            <GlassCard 
+              className="p-8 h-full" 
+              interactive={true}
+              glow={true}
+            >
               <h3 className="text-2xl font-bold mb-6 font-montserrat">
                 <span className="gradient-cyan-purple gradient-text">MT5 Platform Benefits</span>
               </h3>
@@ -155,7 +170,7 @@ const IndianBrokersSection = () => {
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
                     <div 
-                      className="w-6 h-6 rounded-full flex items-center justify-center mr-3 mt-1"
+                      className="w-6 h-6 rounded-full flex items-center justify-center mr-3 mt-1 hover-target"
                       style={{ backgroundColor: `${benefit.color}20` }}
                     >
                       <i className={`fas ${benefit.icon} text-sm`} style={{ color: benefit.color }}></i>
@@ -177,7 +192,11 @@ const IndianBrokersSection = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7 }}
           >
-            <GlassCard className="p-8 h-full relative overflow-hidden">
+            <GlassCard 
+              className="p-8 h-full relative overflow-hidden" 
+              interactive={true}
+              glow={true}
+            >
               <motion.div 
                 className="absolute top-0 right-0 w-48 h-48 bg-[#ff6b6b]/20 rounded-full blur-3xl"
                 animate={{ 
@@ -195,40 +214,55 @@ const IndianBrokersSection = () => {
               </p>
               <div className="space-y-4 relative">
                 <motion.div 
-                  className="glass-card p-4 rounded-lg border border-white/10"
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.1 }}
                 >
-                  <h4 className="font-bold text-white mb-1">Permitted Currency Pairs</h4>
-                  <p className="text-white/70 text-sm">
-                    Indian traders can trade specific currency pairs including USD/INR, EUR/INR, GBP/INR, and JPY/INR through authorized channels.
-                  </p>
+                  <GlassCard
+                    className="p-4"
+                    shine={true}
+                    interactive={true}
+                  >
+                    <h4 className="font-bold text-white mb-1">Permitted Currency Pairs</h4>
+                    <p className="text-white/70 text-sm">
+                      Indian traders can trade specific currency pairs including USD/INR, EUR/INR, GBP/INR, and JPY/INR through authorized channels.
+                    </p>
+                  </GlassCard>
                 </motion.div>
                 <motion.div 
-                  className="glass-card p-4 rounded-lg border border-white/10"
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                 >
-                  <h4 className="font-bold text-white mb-1">Authorized Brokers</h4>
-                  <p className="text-white/70 text-sm">
-                    Trading should be conducted through brokers registered with regulatory authorities to ensure compliance.
-                  </p>
+                  <GlassCard
+                    className="p-4"
+                    shine={true}
+                    interactive={true}
+                  >
+                    <h4 className="font-bold text-white mb-1">Authorized Brokers</h4>
+                    <p className="text-white/70 text-sm">
+                      Trading should be conducted through brokers registered with regulatory authorities to ensure compliance.
+                    </p>
+                  </GlassCard>
                 </motion.div>
                 <motion.div 
-                  className="glass-card p-4 rounded-lg border border-white/10"
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.3 }}
                 >
-                  <h4 className="font-bold text-white mb-1">Reporting Requirements</h4>
-                  <p className="text-white/70 text-sm">
-                    Traders may need to report their forex transactions as per the Foreign Exchange Management Act (FEMA).
-                  </p>
+                  <GlassCard
+                    className="p-4"
+                    shine={true}
+                    interactive={true}
+                  >
+                    <h4 className="font-bold text-white mb-1">Reporting Requirements</h4>
+                    <p className="text-white/70 text-sm">
+                      Traders may need to report their forex transactions as per the Foreign Exchange Management Act (FEMA).
+                    </p>
+                  </GlassCard>
                 </motion.div>
               </div>
             </GlassCard>

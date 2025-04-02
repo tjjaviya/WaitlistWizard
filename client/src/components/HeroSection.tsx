@@ -73,7 +73,12 @@ const HeroSection = () => {
               ease: "easeInOut"
             }}
           >
-            <div className="relative w-full aspect-[4/3] glass-card rounded-xl overflow-hidden border border-white/10">
+            <GlassCard 
+              className="relative w-full aspect-[4/3] rounded-xl overflow-hidden" 
+              interactive={true}
+              shine={true}
+              glow={true}
+            >
               <div className="w-full h-full object-cover opacity-70">
                 <img 
                   src="https://images.unsplash.com/photo-1642104704074-907c0698cbd9?auto=format&fit=crop&w=800&q=80" 
@@ -83,9 +88,13 @@ const HeroSection = () => {
               </div>
               <div className="absolute inset-0 bg-gradient-to-tr from-[#050816]/90 to-transparent"></div>
               <div className="absolute inset-0 flex flex-col justify-center items-center p-8">
-                <GlassCard className="p-4 rounded-lg w-full max-w-md text-center">
+                <GlassCard 
+                  className="p-4 rounded-lg w-full max-w-md text-center" 
+                  shine={true}
+                  interactive={true}
+                >
                   <div className="text-xs text-[#00ffff] uppercase tracking-wider mb-2">Live Algorithm Transformation</div>
-                  <div className="relative h-32 overflow-hidden mb-4 bg-[#050816]/70 rounded border border-white/10">
+                  <div className="relative h-32 overflow-hidden mb-4 bg-[#050816]/70 rounded border border-white/10 shine-effect">
                     <pre className="text-left text-xs text-white/70 p-3 font-mono">
                       <span className="text-[#ff6b6b]">function</span> <span className="text-[#00ffff]">tradingStrategy</span>() {"{"}{"\n"}
                       {"  "}<span className="text-[#4d54e0]">if</span> (ema50 {">"} ema200 && rsi {"<"} 30) {"{"}{"\n"}
@@ -110,7 +119,7 @@ const HeroSection = () => {
                   </div>
                 </GlassCard>
               </div>
-            </div>
+            </GlassCard>
             <motion.div 
               className="absolute -bottom-6 -right-6 w-24 h-24 bg-[#4d54e0]/20 rounded-full blur-2xl"
               animate={{ scale: [1, 1.2, 1] }}
@@ -125,30 +134,36 @@ const HeroSection = () => {
         </motion.div>
         
         <motion.div 
-          className="mt-20 glass-card py-6 px-8 rounded-xl flex flex-wrap justify-between items-center gap-6"
+          className="mt-20"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
         >
-          <div className="text-center flex-1 min-w-[120px]">
-            <div className="text-3xl font-bold text-white mb-2">100+</div>
-            <div className="text-white/60 text-sm">Brokers Supported</div>
-          </div>
-          <div className="h-10 w-px bg-white/10 hidden md:block"></div>
-          <div className="text-center flex-1 min-w-[120px]">
-            <div className="text-3xl font-bold text-white mb-2">99.9%</div>
-            <div className="text-white/60 text-sm">Uptime Reliability</div>
-          </div>
-          <div className="h-10 w-px bg-white/10 hidden md:block"></div>
-          <div className="text-center flex-1 min-w-[120px]">
-            <div className="text-3xl font-bold text-white mb-2">10ms</div>
-            <div className="text-white/60 text-sm">Execution Speed</div>
-          </div>
-          <div className="h-10 w-px bg-white/10 hidden md:block"></div>
-          <div className="text-center flex-1 min-w-[120px]">
-            <div className="text-3xl font-bold text-white mb-2">24/7</div>
-            <div className="text-white/60 text-sm">Support Available</div>
-          </div>
+          <GlassCard
+            className="py-6 px-8 flex flex-wrap justify-between items-center gap-6"
+            interactive={true}
+            glow={true}
+          >
+            <div className="text-center flex-1 min-w-[120px]">
+              <div className="text-3xl font-bold text-white mb-2">100+</div>
+              <div className="text-white/60 text-sm">Brokers Supported</div>
+            </div>
+            <div className="h-10 w-px bg-white/10 hidden md:block"></div>
+            <div className="text-center flex-1 min-w-[120px]">
+              <div className="text-3xl font-bold text-white mb-2">99.9%</div>
+              <div className="text-white/60 text-sm">Uptime Reliability</div>
+            </div>
+            <div className="h-10 w-px bg-white/10 hidden md:block"></div>
+            <div className="text-center flex-1 min-w-[120px]">
+              <div className="text-3xl font-bold text-white mb-2">10ms</div>
+              <div className="text-white/60 text-sm">Execution Speed</div>
+            </div>
+            <div className="h-10 w-px bg-white/10 hidden md:block"></div>
+            <div className="text-center flex-1 min-w-[120px]">
+              <div className="text-3xl font-bold text-white mb-2">24/7</div>
+              <div className="text-white/60 text-sm">Support Available</div>
+            </div>
+          </GlassCard>
         </motion.div>
       </div>
       <div className="absolute top-1/4 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/4 bg-[#4d54e0]/20 rounded-full blur-[120px] opacity-30"></div>

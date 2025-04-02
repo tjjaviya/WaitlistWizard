@@ -4,6 +4,8 @@ import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
+import CursorEffect from "@/components/CursorEffect";
+import GlowingBackground from "@/components/GlowingBackground";
 
 function Router() {
   return (
@@ -17,6 +19,8 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <GlowingBackground />
+      <CursorEffect />
       <Router />
       <Toaster />
     </QueryClientProvider>

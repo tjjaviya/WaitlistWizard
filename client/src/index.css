@@ -41,6 +41,16 @@
     @apply border-border;
   }
   
+  html {
+    cursor: none;
+  }
+  
+  @media (max-width: 768px) {
+    html {
+      cursor: default;
+    }
+  }
+  
   body {
     @apply bg-background text-foreground;
     background-color: hsl(234, 85%, 5%);
@@ -48,6 +58,16 @@
       radial-gradient(circle at 10% 20%, rgba(77, 84, 224, 0.05) 0%, transparent 30%),
       radial-gradient(circle at 80% 80%, rgba(0, 255, 255, 0.05) 0%, transparent 30%);
     overflow-x: hidden;
+  }
+  
+  a, button, .hover-target {
+    cursor: none;
+  }
+  
+  @media (max-width: 768px) {
+    a, button, .hover-target {
+      cursor: pointer;
+    }
   }
 
   .font-montserrat {
@@ -108,5 +128,68 @@
   
   .gradient-full {
     @apply bg-gradient-to-r from-[#00ffff] via-[#4d54e0] to-[#ff6b6b];
+  }
+  
+  /* Interactive hover effects */
+  .interactive-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .interactive-hover:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 25px -5px rgba(0, 255, 255, 0.2);
+  }
+  
+  /* Glow effect for buttons and interactive elements */
+  .glow-on-hover {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  .glow-on-hover::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, rgba(0, 255, 255, 0.25), rgba(77, 84, 224, 0.25), rgba(255, 107, 107, 0.25));
+    z-index: -1;
+    filter: blur(15px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .glow-on-hover:hover::after {
+    opacity: 1;
+  }
+  
+  /* Shine effect for cards and images */
+  .shine-effect {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .shine-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      transparent 100%
+    );
+    transform: skewX(-25deg);
+    z-index: 2;
+    transition: left 0.75s ease-out;
+  }
+  
+  .shine-effect:hover::before {
+    left: 150%;
   }
 }
