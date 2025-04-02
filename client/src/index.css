@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 234 85% 5%;
+    --foreground: 0 0% 100%;
+
+    --card: 231 40% 8%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 231 40% 8%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 183 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 255 90% 55%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 234, 85%, 9%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 331 100% 70%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 100% / 0.05;
+    --input: 0 0% 100% / 0.05;
+    --ring: 183 100% 50%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    background-color: hsl(234, 85%, 5%);
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(77, 84, 224, 0.05) 0%, transparent 30%),
+      radial-gradient(circle at 80% 80%, rgba(0, 255, 255, 0.05) 0%, transparent 30%);
+    overflow-x: hidden;
+  }
+
+  .font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .glass-card {
+    background: rgba(10, 11, 30, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+  }
+  
+  .circuit-bg {
+    position: relative;
+  }
+  
+  .circuit-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+    background-size: cover;
+    opacity: 0.05;
+    z-index: -1;
+  }
+  
+  .hover-up {
+    transition: transform 0.3s ease-out;
+  }
+  
+  .hover-up:hover {
+    transform: translateY(-5px);
+  }
+  
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+  }
+  
+  .gradient-cyan-purple {
+    @apply bg-gradient-to-r from-[#00ffff] to-[#4d54e0];
+  }
+  
+  .gradient-purple-pink {
+    @apply bg-gradient-to-r from-[#4d54e0] to-[#ff6b6b];
+  }
+  
+  .gradient-cyan-pink {
+    @apply bg-gradient-to-r from-[#00ffff] to-[#ff6b6b];
+  }
+  
+  .gradient-full {
+    @apply bg-gradient-to-r from-[#00ffff] via-[#4d54e0] to-[#ff6b6b];
+  }
+}
