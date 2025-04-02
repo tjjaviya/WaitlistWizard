@@ -41,13 +41,13 @@
     @apply border-border;
   }
   
-  html {
-    cursor: none;
+  html, body {
+    cursor: none !important;
   }
   
   @media (max-width: 768px) {
-    html {
-      cursor: default;
+    html, body {
+      cursor: default !important;
     }
   }
   
@@ -60,13 +60,15 @@
     overflow-x: hidden;
   }
   
-  a, button, .hover-target {
-    cursor: none;
+  a, button, .hover-target, .hover-up, .glow-on-hover, .shine-effect, 
+  .glass-card, [class*="glass-card"], .interactive-hover {
+    cursor: none !important;
   }
   
   @media (max-width: 768px) {
-    a, button, .hover-target {
-      cursor: pointer;
+    a, button, .hover-target, .hover-up, .glow-on-hover, .shine-effect, 
+    .glass-card, [class*="glass-card"], .interactive-hover {
+      cursor: pointer !important;
     }
   }
 
@@ -191,5 +193,39 @@
   
   .shine-effect:hover::before {
     left: 150%;
+  }
+  
+  /* Custom cursor styles */
+  .cursor-dot, .cursor-ring, .cursor-glow {
+    pointer-events: none !important;
+    position: fixed;
+    z-index: 9999;
+    will-change: transform;
+  }
+  
+  /* Smooth scroll for entire page */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Force cursor to be hidden on all elements */
+  * {
+    cursor: none !important;
+  }
+  
+  @media (max-width: 768px) {
+    * {
+      cursor: auto !important;
+    }
+  }
+  
+  /* Hover target classes to show the cursor effect */
+  .hover-target {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .hover-target:hover {
+    z-index: 2;
   }
 }
