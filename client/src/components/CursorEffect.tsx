@@ -172,6 +172,36 @@ const CursorEffect = () => {
 
   return (
     <>
+      {/* Main cursor pointer */}
+      <motion.div
+        className="cursor-pointer hidden md:block"
+        animate={{
+          left: mousePosition.x,
+          top: mousePosition.y,
+          scale: cursorVariant === "hover" ? 1.2 : 1,
+          opacity: isVisible ? 1 : 0
+        }}
+        transition={{
+          type: "spring",
+          mass: 0.2,
+          damping: 15,
+          stiffness: 350
+        }}
+        style={{
+          position: "fixed",
+          zIndex: 10000,
+          pointerEvents: "none",
+          width: 30,
+          height: 30,
+          marginLeft: -5,
+          marginTop: -5,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'%3E%3Cpath d='M7 4L25 16L15 19L12 29L7 4Z' fill='white' stroke='%2300ffff' stroke-width='1.5'/%3E%3C/svg%3E")`,
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat"
+        }}
+      />
+
+      {/* Dot cursor for more precise indication */}
       <motion.div
         className="cursor-dot hidden md:block"
         variants={variants}
@@ -180,21 +210,22 @@ const CursorEffect = () => {
           position: "fixed",
           zIndex: 9999,
           pointerEvents: "none",
-          height: 32,
-          width: 32,
+          height: 8,
+          width: 8,
           borderRadius: "50%",
-          backgroundColor: "rgba(77, 84, 224, 0.2)",
-          backdropFilter: "blur(4px)",
-          boxShadow: "0 0 20px 2px rgba(0, 255, 255, 0.3)",
-          mixBlendMode: "difference"
+          backgroundColor: "rgba(0, 255, 255, 0.8)",
+          boxShadow: "0 0 10px 2px rgba(0, 255, 255, 0.5)",
+          mixBlendMode: "screen"
         }}
       />
+
+      {/* Ring effect */}
       <motion.div
         className="cursor-ring hidden md:block"
         animate={{
           left: mousePosition.x,
           top: mousePosition.y,
-          opacity: isVisible ? 1 : 0,
+          opacity: isVisible ? 0.5 : 0,
           scale: cursorVariant === "hover" ? 1.2 : 1
         }}
         transition={{
@@ -207,20 +238,22 @@ const CursorEffect = () => {
           position: "fixed",
           zIndex: 9998,
           pointerEvents: "none",
-          height: 100,
-          width: 100,
+          height: 40,
+          width: 40,
           borderRadius: "50%",
           backgroundColor: "transparent",
-          border: "1px solid rgba(0, 255, 255, 0.2)",
+          border: "1.5px solid rgba(0, 255, 255, 0.5)",
           transform: "translate(-50%, -50%)"
         }}
       />
+
+      {/* Glow effect */}
       <motion.div
         className="cursor-glow hidden md:block"
         animate={{
           left: mousePosition.x,
           top: mousePosition.y,
-          opacity: isVisible ? 0.7 : 0,
+          opacity: isVisible ? 0.3 : 0,
           scale: cursorVariant === "hover" ? 1.1 : 1
         }}
         transition={{
@@ -233,10 +266,10 @@ const CursorEffect = () => {
           position: "fixed",
           zIndex: 9997,
           pointerEvents: "none",
-          height: 200,
-          width: 200,
+          height: 120,
+          width: 120,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, rgba(77, 84, 224, 0.05) 50%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(0, 255, 255, 0.2) 0%, rgba(77, 84, 224, 0.1) 50%, transparent 70%)",
           transform: "translate(-50%, -50%)"
         }}
       />

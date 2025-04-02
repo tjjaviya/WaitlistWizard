@@ -196,7 +196,7 @@
   }
   
   /* Custom cursor styles */
-  .cursor-dot, .cursor-ring, .cursor-glow {
+  .cursor-pointer, .cursor-dot, .cursor-ring, .cursor-glow {
     pointer-events: none !important;
     position: fixed;
     z-index: 9999;
@@ -208,11 +208,14 @@
     scroll-behavior: smooth;
   }
   
-  /* Force cursor to be hidden on all elements */
-  * {
-    cursor: none !important;
+  /* Force cursor to be hidden on all elements on desktop */
+  @media (min-width: 769px) {
+    * {
+      cursor: none !important;
+    }
   }
   
+  /* Use default cursor on mobile devices */
   @media (max-width: 768px) {
     * {
       cursor: auto !important;
