@@ -208,18 +208,9 @@
     scroll-behavior: smooth;
   }
   
-  /* Force cursor to be hidden on all elements on desktop */
-  @media (min-width: 769px) {
-    * {
-      cursor: none !important;
-    }
-  }
-  
-  /* Use default cursor on mobile devices */
-  @media (max-width: 768px) {
-    * {
-      cursor: auto !important;
-    }
+  /* Use default cursor on all devices */
+  * {
+    cursor: auto !important;
   }
   
   /* Hover target classes to show the cursor effect */
