@@ -1,19 +1,33 @@
 #!/bin/bash
 
-# Build the frontend
+# Build frontend with Vite
 echo "Building frontend..."
-vite build
+cd client
+npm install
+npm run build  # Outputs to client/dist
+mv client/dist ../dist  # Move to root dist directory
+cd ..
 
-# Build the server for serverless functions
-echo "Building server components..."
-esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+# Build serverless functions
+echo "Building API functions..."
+cd server
+npm install
 
-# Create Netlify functions directory
-echo "Setting up Netlify functions..."
+# Bundle server code for Netlify Functions
+esbuild index.ts \
+  --bundle \
+  --platform=node \
+  --target=node18 \
+  --format=esm \
+  --packages=external \
+  --outfile=../netlify/functions/api.js
+
+cd ..
+
+# Ensure functions directory exists
 mkdir -p dist/.netlify/functions
-cp -r netlify/functions/* dist/.netlify/functions/
 
-# Make functions executable
-chmod +x dist/.netlify/functions/*.js
+# Copy serverless functions to final location
+cp -r netlify/functions/* dist/.netlify/functions/
 
 echo "Build completed successfully!"
