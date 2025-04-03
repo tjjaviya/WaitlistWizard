@@ -101,12 +101,12 @@ const HeroSection = () => {
                   <div className="relative h-32 overflow-hidden mb-4 bg-[#050816]/70 rounded border border-white/10 shine-effect">
                     <pre className="text-left text-xs text-white/70 p-3 font-mono">
                       <span className="text-[#ff6b6b]">function</span> <span className="text-[#00ffff]">tradingStrategy</span>() {"{"}{"\n"}
-                      {"  "}<span className="text-[#4d54e0]">if</span> (ema50 {">"} ema200 && rsi {"<"} 30) {"{"}{"\n"}
-                      {"    "}<span className="text-[#ff6b6b]">return</span> <span className="text-green-400">'BUY'</span>;{"\n"}
-                      {"  "}<span className="text-[#4d54e0]">{"}"} else if</span> (ema50 {"<"} ema200 && rsi {">"} 70) {"{"}{"\n"}
-                      {"    "}<span className="text-[#ff6b6b]">return</span> <span className="text-red-400">'SELL'</span>;{"\n"}
+                      {"  "}<span className="text-[#ff6b6b]">if</span> (ema50 {">"} ema200 && rsi {"<"} 30) {"{"}{"\n"}
+                      {"    "}<span className="text-[#00ffff]">return</span> <span className="text-green-400">"BUY"</span>;{"\n"}
+                      {"  "}<span className="text-[#ff6b6b]">{"}"} else if</span> (ema50 {"<"} ema200 && rsi {">"} 70) {"{"}{"\n"}
+                      {"    "}<span className="text-[#00ffff]">return</span> <span className="text-red-400">"SELL"</span>;{"\n"}
                       {"  "}{"}"}
-                      <span className="text-[#ff6b6b]">return</span> <span className="text-white">'HOLD'</span>;{"\n"}
+                      <span className="text-[#00ffff]">return</span> <span className="text-white">"HOLD"</span>;{"\n"}
                       {"}"}
                     </pre>
                   </div>
