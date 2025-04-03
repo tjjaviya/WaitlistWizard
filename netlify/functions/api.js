@@ -1,20 +1,38 @@
+// Simplified version of the API without top-level await
+'use strict';
+
 const express = require('express');
 const serverless = require('serverless-http');
 const cors = require('cors');
+
+// Create Express app
 const app = express();
 
-// Middleware
-app.use(cors());
+// Configure middleware
+app.use(cors({
+  origin: '*', // Allow all origins for demo purposes
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 
-// In-memory storage for subscribers and contact requests
-let subscribers = [];
-let contactRequests = [];
+// In-memory storage
+const subscribers = [];
+const contactRequests = [];
 
-// API Routes
-app.post('/api/subscribe', async (req, res) => {
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok', environment: 'netlify' });
+});
+
+// Newsletter subscription
+app.post('/subscribe', (req, res) => {
   try {
     const { email } = req.body;
+    
+    if (!email || typeof email !== 'string') {
+      return res.status(400).json({ error: 'Valid email is required' });
+    }
     
     // Check if email already exists
     const existingSubscriber = subscribers.find(s => s.email === email);
@@ -32,14 +50,19 @@ app.post('/api/subscribe', async (req, res) => {
     subscribers.push(newSubscriber);
     return res.status(201).json(newSubscriber);
   } catch (error) {
-    console.error('Error in /api/subscribe:', error);
+    console.error('Error in /subscribe:', error);
     return res.status(500).json({ error: 'Server error' });
   }
 });
 
-app.post('/api/contact', async (req, res) => {
+// Contact form submission
+app.post('/contact', (req, res) => {
   try {
     const { name, email, message } = req.body;
+    
+    if (!name || !email || !message) {
+      return res.status(400).json({ error: 'All fields are required' });
+    }
     
     // Create new contact request
     const newContact = {
@@ -53,24 +76,20 @@ app.post('/api/contact', async (req, res) => {
     contactRequests.push(newContact);
     return res.status(201).json(newContact);
   } catch (error) {
-    console.error('Error in /api/contact:', error);
+    console.error('Error in /contact:', error);
     return res.status(500).json({ error: 'Server error' });
   }
 });
 
-app.get('/api/subscribers', async (req, res) => {
+// Get all subscribers
+app.get('/subscribers', (req, res) => {
   try {
     return res.status(200).json(subscribers);
   } catch (error) {
-    console.error('Error in /api/subscribers:', error);
+    console.error('Error in /subscribers:', error);
     return res.status(500).json({ error: 'Server error' });
   }
 });
 
-// Add a health check endpoint
-app.get('/api/health', (req, res) => {
-  return res.status(200).json({ status: 'ok' });
-});
-
-// For serverless function
+// Export the serverless function handler
 module.exports.handler = serverless(app);

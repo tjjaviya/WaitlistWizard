@@ -1,20 +1,21 @@
 #!/bin/bash
+set -e
 
-# Build frontend with Vite
+# Install dependencies
+echo "Installing dependencies..."
+npm install
+
+# Build the client code
 echo "Building frontend..."
 cd client
 npm install
-npm run build  # Outputs to client/dist
-mv client/dist ../dist  # Move to root dist directory
+npm run build
+mkdir -p ../dist
+cp -r dist/* ../dist/
 cd ..
 
-# For Netlify, we'll use our pre-defined function file
-echo "Setting up API functions for Netlify..."
-
-# Ensure functions directory exists
-mkdir -p dist/.netlify/functions
-
-# Copy our pre-built serverless function
-cp -r netlify/functions/* dist/.netlify/functions/
+# Make sure functions are in the right place for Netlify
+echo "Setting up serverless functions for Netlify..."
+# We're keeping our pre-defined function files
 
 echo "Build completed successfully!"

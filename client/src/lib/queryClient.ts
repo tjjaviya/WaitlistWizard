@@ -9,8 +9,9 @@ const isNetlify = process.env.NODE_ENV === 'production' &&
 const getApiUrl = (url: string): string => {
   // If we're in Netlify environment and it's an API call
   if (isNetlify && url.startsWith('/api/')) {
-    // Rewrite to use Netlify functions
-    return `/.netlify/functions/api${url.substring(4)}`;
+    // URL format changed - the endpoint paths in the Netlify function are without the '/api' prefix
+    const endpoint = url.substring(5); // Remove '/api/' prefix
+    return `/.netlify/functions/api/${endpoint}`;
   }
   return url;
 };

@@ -1,21 +1,30 @@
 [build]
-  command = "sh build.sh"
-  publish = "dist"  # Vite's default output directory
-  functions = "dist/.netlify/functions"  # Compiled functions location
+  command = "npm install && sh build.sh"
+  publish = "dist"
+  functions = "netlify/functions"
 
-# Single Page Application routing
+# SPA fallback
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  force = true
 
-# API routing
+# API redirects - both patterns for compatibility
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/api/:splat"
   status = 200
+  force = true
 
-# Required for Vite/React hydration
+# Direct API function endpoint access
+[[redirects]]
+  from = "/.netlify/functions/api"
+  to = "/.netlify/functions/api"
+  status = 200
+  force = true
+
+# Headers for improved security and caching
 [[headers]]
   for = "/*"
   [headers.values]
