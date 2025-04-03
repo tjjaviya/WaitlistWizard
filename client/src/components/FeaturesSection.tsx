@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import GlassCard from "./GlassCard";
 import GradientBorder from "./GradientBorder";
+import ChartBackground from "./ChartBackground";
 
 const FeaturesSection = () => {
   // Animation variants
@@ -66,6 +67,9 @@ const FeaturesSection = () => {
 
   return (
     <section id="features" className="py-20 relative">
+      {/* Add the chart background with different color */}
+      <ChartBackground opacity={0.12} color="#4d54e0" />
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div 
           className="text-center mb-16"
