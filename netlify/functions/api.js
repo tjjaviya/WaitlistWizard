@@ -67,5 +67,10 @@ app.get('/api/subscribers', async (req, res) => {
   }
 });
 
+// Add a health check endpoint
+app.get('/api/health', (req, res) => {
+  return res.status(200).json({ status: 'ok' });
+});
+
 // For serverless function
 module.exports.handler = serverless(app);

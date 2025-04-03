@@ -8,26 +8,13 @@ npm run build  # Outputs to client/dist
 mv client/dist ../dist  # Move to root dist directory
 cd ..
 
-# Build serverless functions
-echo "Building API functions..."
-cd server
-npm install
-
-# Bundle server code for Netlify Functions
-esbuild index.ts \
-  --bundle \
-  --platform=node \
-  --target=node18 \
-  --format=esm \
-  --packages=external \
-  --outfile=../netlify/functions/api.js
-
-cd ..
+# For Netlify, we'll use our pre-defined function file
+echo "Setting up API functions for Netlify..."
 
 # Ensure functions directory exists
 mkdir -p dist/.netlify/functions
 
-# Copy serverless functions to final location
+# Copy our pre-built serverless function
 cp -r netlify/functions/* dist/.netlify/functions/
 
 echo "Build completed successfully!"

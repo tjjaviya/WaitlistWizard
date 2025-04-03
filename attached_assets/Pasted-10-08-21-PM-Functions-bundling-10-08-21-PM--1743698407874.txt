@@ -1,0 +1,47 @@
+10:08:21 PM: Functions bundling                                            
+10:08:21 PM: ────────────────────────────────────────────────────────────────
+10:08:21 PM: ​
+10:08:21 PM: Packaging Functions from dist/.netlify/functions directory:
+10:08:21 PM:  - api.js
+10:08:21 PM: ​
+10:08:40 PM: Failed during stage 'building site': Build script returned non-zero exit code: 2 (https://ntl.fyi/exit-code-2)
+10:08:39 PM: ✘ [ERROR] Top-level await is currently not supported with the "cjs" output format
+10:08:39 PM:     dist/.netlify/functions/api.js:176:6:
+10:08:39 PM:       176 │       await import("@replit/vite-plugin-cartographer").then(
+10:08:39 PM:           ╵       ~~~~~
+10:08:39 PM: ​
+10:08:39 PM: Bundling of function "api" failed                             
+10:08:39 PM: ────────────────────────────────────────────────────────────────
+10:08:39 PM: ​
+10:08:39 PM:   Error message
+10:08:39 PM:   Build failed with 1 error:
+10:08:39 PM:   dist/.netlify/functions/api.js:176:6: ERROR: Top-level await is currently not supported with the "cjs" output format
+10:08:39 PM: ​
+10:08:39 PM:   Error location
+10:08:39 PM:   While bundling function "api"
+10:08:39 PM: ​
+10:08:39 PM:   Resolved config
+10:08:39 PM:   build:
+10:08:39 PM:     command: sh build.sh
+10:08:39 PM:     commandOrigin: config
+10:08:39 PM:     publish: /opt/build/repo/dist
+10:08:39 PM:     publishOrigin: config
+10:08:39 PM:   functionsDirectory: /opt/build/repo/dist/.netlify/functions
+10:08:39 PM:   headers:
+10:08:40 PM:     - for: /*
+      values:
+        Cache-Control: public, max-age=0, must-revalidate
+        X-Content-Type-Options: nosniff
+        X-Frame-Options: DENY
+  headersOrigin: config
+  redirects:
+    - from: /*
+      status: 200
+      to: /index.html
+    - from: /api/*
+      status: 200
+      to: /.netlify/functions/api/:splat
+  redirectsOrigin: config
+10:08:40 PM: Build failed due to a user error: Build script returned non-zero exit code: 2
+10:08:40 PM: Failing build: Failed to build site
+10:08:41 PM: Finished processing build request in 42.538s

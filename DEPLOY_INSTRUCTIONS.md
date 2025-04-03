@@ -35,8 +35,9 @@ git push -u origin main
 3. Choose GitHub as your Git provider
 4. Select the repository you just created
 5. Configure the following build settings:
-   - **Build command**: `npm run build`
+   - **Build command**: `sh build.sh`
    - **Publish directory**: `dist`
+   - **Functions directory**: `dist/.netlify/functions`
 6. Click "Deploy site"
 
 ### 4. Environment Variables (if needed)
@@ -55,6 +56,7 @@ If your application uses environment variables:
 
 - **API not working**: Verify that API calls are using the correct paths. In production, API paths should be `/.netlify/functions/api/...` instead of `/api/...`
 - **Build failures**: Check the build logs for any errors. Common issues include missing dependencies or incorrect build commands.
+- **"Top-level await not supported" error**: If you encounter an error about top-level await not being supported, make sure to use the pre-built `api.js` file in the netlify/functions directory which uses CommonJS format and doesn't contain top-level await.
 - **Redirects not working**: Ensure the `netlify.toml` file is properly configured with the correct redirects.
 
 ## Additional Resources
